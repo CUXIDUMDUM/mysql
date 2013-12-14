@@ -1,0 +1,15 @@
+foo:
+  username: root
+  password: admin
+  dsn:      "dbi:mysql:database=foo"
+  database: mysql
+bar:
+  username: root
+  password: admin
+  dsn:      "dbi:mysql:database=bar"
+  database: mysql
+baz:
+  username: ""
+  password: ""
+  dsn:      "dbi:SQLite:dbname=var/testdb"
+  database:  SQLite
