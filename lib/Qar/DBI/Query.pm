@@ -33,6 +33,7 @@ sub _build__sth {
             my $dbh = $_;
             my $sth   = $dbh->prepare($self->sql);
             $sth->execute();
+            $dbh->commit();
             $sth;
         },
     );
@@ -43,6 +44,14 @@ sub fetchrow {
     my ($self) = @_;
     
     return $self->_sth->fetchrow_array();
+}
+
+
+sub execute {
+    my ($self) = @_;
+
+    $self->_sth->finish();
+    return;
 }
 
 1;

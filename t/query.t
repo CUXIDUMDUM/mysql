@@ -28,4 +28,15 @@ while ( my $row = $execute->fetchrow ) {
     say dump($row);
 }
 
+$sql = sprintf("INSERT INTO BAR values ('%s')", "$$");
+
+$execute = $dbi->query($db_key, $sql);
+$execute->execute();
+
+$sql = "SELECT * FROM BAR";
+$execute = $dbi->query($db_key, $sql);
+
+while ( my $row = $execute->fetchrow ) {
+    say dump($row);
+}
 done_testing();
