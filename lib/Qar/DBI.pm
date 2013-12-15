@@ -7,6 +7,7 @@ use Data::Dump qw(dump);
 use Carp;
 use DBIx::Connector;
 use Qar::DBI::Conf;
+use Qar::DBI::Query;
 
 has 'dbi_conf' => (
     is => 'ro',
@@ -30,6 +31,12 @@ sub get_db_conn {
     );
 
     return DBIx::Connector->new(@connect_args);
+}
+
+sub query {
+    my ($self, $db_key, $sql) = @_;
+
+    return Qar::DBI::Query->new( db_conn => $self->get_db_conn($db_key), sql => $sql);
 }
 
 1;
